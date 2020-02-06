@@ -1,0 +1,79 @@
+﻿@model Animal_Medicine.ViewModels.MainViewModel
+
+<section class="search_and_glossary">
+
+    <form class="search" asp-controller="Main" asp-action="Index" method="post">
+        <div class="search_pet_type">
+            @foreach (var item in Model.PetTypes)
+            {
+                <input type="radio" name="PetType" value="@item.Title" />
+                <label asp-for="PetTypes">@item.Title</label>
+            }
+        </div>
+
+        <div>
+            <input class="search_field" type="text" name="SearchString" placeholder="Что ищем?" />
+            <input class="search_button" type="submit" value="&#128269;" />
+        </div>
+    </form>
+    <div class="glossary">
+        @{
+            char[] az = Enumerable.Range('А', 'Я' - 'А' + 1)
+                .Select(i => (Char)i).ToArray();
+            foreach (var item in az)
+            {
+                <a asp-controller="Main" asp-action="Index" asp-route-cChar="@item">@item</a>
+            }
+        }
+    </div>
+</section>
+
+<main class="content">
+    <div class="articlesGrid">
+        @foreach (var item in Model.Diseases)
+        {
+            <div class="diseaseItem">
+
+                <div class="diseaseLink">
+                    <div class="diseaseInfoBlock">
+                        <b><a asp-action="DetailsDisease" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a></b>
+                        <span class="diseaseInfoBlockItem">
+                            @Html.DisplayFor(modelItem => item.PetType.Title)
+                        </span>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <form asp-action="EditDisease" asp-route-id="@item.Id" class="diseaseLinkForm">
+                                <button type="submit" class="diseaseLinkFormBtn diseaseLinkFormEdit">Редактировать</button>
+                            </form>
+
+                            <form asp-action="DeleteDisease" asp-route-id="@item.Id" class="diseaseLinkForm">
+                                <button type="submit" class="diseaseLinkFormBtn diseaseLinkFormDelete">Удалить</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+
+                
+            </div>
+        }
+    </div>
+    
+    @{
+        var prevDisabled = !Model.Diseases.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Diseases.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-pageIndex="@(Model.Diseases.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        < Назад
+    </a>
+    <a asp-action="Index"
+       asp-route-pageIndex="@(Model.Diseases.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Вперед >
+    </a>
+</main>
+

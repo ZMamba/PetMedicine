@@ -1,0 +1,192 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+html{
+    font-size: 14px;
+}
+body {
+    padding-bottom: 20px;
+}
+a {
+    color: inherit;
+}
+a:hover{
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+/*MY CSS STYLE*/
+.app_header {
+    background: linear-gradient(60deg, #3fb8cc, #1ad2fb);
+    padding: 2rem 4rem;
+}
+.logo {
+    float: left;
+    color: white;
+    font-size: 2.6rem;
+}
+.admin_cab{
+    float: right;
+}
+    .admin_cab > a {
+        background: #71a3ff;
+        padding: 6px;
+    }
+.app_body {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.search_and_glossary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(60deg, #3fb8cc, #1ad2fb);
+    border-radius: 0px 0px 2.4rem 0px;
+    padding: 0rem 3.2rem 1.6rem 3.2rem;
+}
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search_pet_type {
+    margin: 0 0 10px 0;
+}
+.search_pet_type label {
+    font-weight: 100;
+}
+.search_field {
+    border: none;
+    width: 250px;
+    height: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+.search_button {
+    border: none;
+    background: #ff7171;
+    width: 34px;
+    height: 30px;
+    border-radius: 15px;
+}
+.glossary {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    color: white;
+    margin: 1.6rem 0rem 0rem;
+}
+.glossary a {
+    margin: 0 2px;
+}
+.articlesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.diseaseItem {
+    margin: .8rem 0;
+}
+.diseaseDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.6rem;
+}
+.textContent {
+    padding-right: 1rem;
+}
+.diseaseImage {
+    max-width: 500px;
+    max-height: 340px;
+}
+.diseaseInfo {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid lightskyblue;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+.diseaseInfoBlock {
+    margin: 0.6rem;
+    line-height: 2;
+}
+.diseaseInfoBlockItem {
+    color: #fff;
+    background: #E63917;
+    margin: 0 6px;
+    padding: 4px;
+    border-radius: 4px;
+}
+.diseaseLink {
+    display: flex;
+}
+.diseaseLink .diseaseInfoBlockItem {
+    font-size: .8rem;
+}
+.diseaseLinkForm {
+    margin: auto 0;
+}
+.diseaseLinkFormBtn {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin: 0 4px;
+}
+.diseaseLinkFormEdit {
+    background-color: #31bfbc;
+}
+.diseaseLinkFormDelete {
+    background-color: #ff6500;
+}
+
+@media (max-width: 992px) {
+    .diseaseImage {
+        max-width: 400px;
+        max-height: 240px;
+    }
+}
+@media(max-width: 768px) {
+    .articlesGrid{
+        grid-template-columns: 1fr;
+    }
+    .diseaseDetails {
+        flex-direction: column;
+        margin: 1rem;
+    }
+}
+@media (max-width: 650px) {
+    .glossary {
+        display: none;
+    }
+}

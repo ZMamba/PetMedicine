@@ -1,0 +1,42 @@
+﻿@model Animal_Medicine.ViewModels.CreateDiseaseViewModel
+
+<h4>
+    Создать
+</h4>
+<form asp-action="CreateDisease" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tags" class="control-label"></label>
+        <input asp-for="Tags" id="tags_simptomi" class="form-control" />
+        <span asp-validation-for="Tags" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label" ></label>
+        <input asp-for="Description" class="form-control"/>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PetTypeId" class="control-label"></label>
+        <select asp-for="PetTypeId" asp-items="@(new SelectList(Model.PetTypes, "Id", "Title"))"></select>
+        <span asp-validation-for="PetTypeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="file" name="pic"/>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-info" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="alert-warning">К списку</a>
+</div>
+

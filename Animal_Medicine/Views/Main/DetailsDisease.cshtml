@@ -1,0 +1,35 @@
+﻿@model Animal_Medicine.Models.Disease
+
+<main class="content">
+
+    <article class="diseaseDetails">
+        <div class="textContent">
+            <a asp-action="Index" class="alert-warning"><i class="fas fa-arrow-left"></i> К списку болезней</a>
+            <h3 class="diseaseTitle">@Model.Title <i class="fas fa-heartbeat"></i></h3>
+            @{ 
+                var tagString = Model.Tags;
+                string[] tags = tagString.Split('/');
+            }
+            <div class="diseaseInfo">
+                <p class="diseaseInfoBlock">
+                    <b>Тип животного:</b>
+                    <span class="diseaseInfoBlockItem">@Model.PetType.Title</span>
+                </p>
+                <p class="diseaseInfoBlock">
+                    <b>Симптомы:</b> @foreach (var tag in tags)
+                    {
+                        <span class="diseaseInfoBlockItem">@tag</span>
+                    }
+                </p>
+            </div>
+            
+            <p class="diseaseDescription">@Model.Description</p>
+        </div>
+
+        <img src="~/images/diseases/@Model.ImageName" alt="@Model.ImageName" class="diseaseImage"/>
+    </article>
+    
+
+
+
+</main>
